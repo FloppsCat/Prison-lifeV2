@@ -40,7 +40,7 @@ local PlayerTab = Window:CreateTab("Player", 4483362458) -- Title, Image
 
 local Section = PlayerTab:CreateSection("Movement")
 
-local Input = Tab:CreateInput({
+local Input = PlayerTab:CreateInput({
    Name = "Player Speed",
    CurrentValue = "1 - 200",
    PlaceholderText = "WalkSpeed",
