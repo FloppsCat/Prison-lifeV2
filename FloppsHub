@@ -39,3 +39,14 @@ local Window = Rayfield:CreateWindow({
 local PlayerTab = Window:CreateTab("Player", 4483362458) -- Title, Image
 
 local Section = PlayerTab:CreateSection("Movement")
+
+local Input = Tab:CreateInput({
+   Name = "Player Speed",
+   CurrentValue = "1 - 200",
+   PlaceholderText = "WalkSpeed",
+   RemoveTextAfterFocusLost = true,
+   Flag = "Input1",
+   Callback = function(Text)
+   game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = Value
+   end,
+})
