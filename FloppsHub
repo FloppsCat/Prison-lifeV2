@@ -47,3 +47,14 @@ local WalkInput = PlayerTab:CreateInput({
         game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = (v)
    end,
 })
+
+local JumpInput = PlayerTab:CreateInput({
+   Name = "Jump Height",
+   PlaceholderText = "1-500",
+   RemoveTextAfterFocusLost = true,
+   Callback = function(v)
+        game.Players.LocalPlayer.Character.Humanoid.JumpPower = (v)
+   end,
+})
+
+
