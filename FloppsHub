@@ -41,13 +41,14 @@ local PlayerTab = Window:CreateTab("Player", 4483362458) -- Title, Image
 
 local Section = PlayerTab:CreateSection("Movement")
 
-local Input = PlayerTab:CreateInput({
+local Slider = PlayerTab:CreateSlider({
    Name = "Player Speed",
-   CurrentValue = "1 - 200",
-   PlaceholderText = "WalkSpeed",
-   RemoveTextAfterFocusLost = true,
-   Flag = "Input1",
-   Callback = function(Text)
-   game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = Value
+   Range = {1, 1000},
+   Increment = 1,
+   Suffix = "Speed",
+   CurrentValue = 10,
+   Flag = "Slider1", -- A flag is the identifier for the configuration file, make sure every element has a different flag if you're using configuration saving to ensure no overlaps
+   Callback = function(Value)
+   game.PLayers.LocalPlayer.Character.Humanoid.WalkSpeed = Value
    end,
 })
