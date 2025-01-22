@@ -65,8 +65,16 @@ local TeleportTab = Window:CreateTab("Teleport", 4483362458) -- Title, Image
 local Section = TeleportTab:CreateSection("Teleporting")
 
 local Button = TeleportTab:CreateButton({
-   Name = "Teleport",
+   Name = "Teleport to crims",
    Callback = function()
    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-943.161194, 94.1287766, 2055.63623, 0.967139363, 7.75302809e-08, -0.254246831, -5.05523126e-08, 1, 1.12643093e-07, 0.254246831, -9.60888045e-08, 0.967139363)
    end,
 })
+
+local Button = TeleportTab:CreateButton({
+   Name = "Teleport to guns",
+   Callback = function()
+   game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(822.476746, 101.000008, 2251.42651, 0.983160257, 1.0569182e-08, -0.182745606, -7.94120858e-09, 1, 1.51122705e-08, 0.182745606, -1.3406563e-08, 0.983160257)
+   end,
+})
+
