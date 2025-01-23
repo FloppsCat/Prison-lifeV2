@@ -541,11 +541,12 @@ end)
 })
 
 local Toggle = PlayerTab:CreateToggle({
-   Name = "Speed Multiplayer",
-   CurrentValue = 100,
+   Name = "Toggle Example",
+   CurrentValue = false,
    Flag = "Toggle1", -- A flag is the identifier for the configuration file, make sure every element has a different flag if you're using configuration saving to ensure no overlaps
    Callback = function(Value)
-   game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = Value
+   -- The function that takes place when the toggle is pressed
+   -- The variable (Value) is a boolean on whether the toggle is true or false
    end,
 })
 
@@ -569,4 +570,3 @@ local Button = TeleportTab:CreateButton({
    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(822.476746, 101.000008, 2251.42651, 0.983160257, 1.0569182e-08, -0.182745606, -7.94120858e-09, 1, 1.51122705e-08, 0.182745606, -1.3406563e-08, 0.983160257)
    end,
 })
-
