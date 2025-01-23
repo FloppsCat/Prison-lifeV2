@@ -540,6 +540,61 @@ end)
    end,
 })
 
+local Button = PlayerTab:CreateButton({
+   Name = "Noclip Gui",
+   Callback = function()
+   -- Instances
+local main = Instance.new("ScreenGui")
+local noclipButton = Instance.new("TextButton")
+
+-- Properties
+main.Name = "main"
+main.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
+main.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+
+noclipButton.Name = "noclipButton"
+noclipButton.Parent = main
+noclipButton.BackgroundColor3 = Color3.fromRGB(100, 200, 100)
+noclipButton.Position = UDim2.new(0.1, 0, 0.4, 0)
+noclipButton.Size = UDim2.new(0, 100, 0, 50)
+noclipButton.Font = Enum.Font.SourceSans
+noclipButton.Text = "No-Clip: OFF"
+noclipButton.TextColor3 = Color3.fromRGB(255, 255, 255)
+noclipButton.TextSize = 16
+
+
+--Noclip Function
+local noClipEnabled = false
+
+
+--Toggle noclipButton
+
+noclipButton.MouseButton1Click:Connect(function()
+    noClipEnabled = not noClipEnabled
+    noclipButton.Text = noClipEnabled and "No-Clip: ON" or "No-Clip: OFF"
+if noClipEnabled then
+        -- Enable Button
+        game:GetService("RunService").Stepped:Connect(function()
+            if noClipEnabled then
+                for _, part in pairs(game.Players.LocalPlayer.Character:GetDescendants()) do
+                    if part:IsA("BasePart") and part.CanCollide then
+                        part.CanCollide = false
+                    end
+                end
+            end
+        end)
+    else
+        --Disable noclipButton
+        for _, part in pairs(game.Players.LocalPlayer.Character:GetDescendants()) do
+            if part:IsA("BasePart") then
+                part.CanCollide = true
+            end
+        end
+    end
+end)
+   end,
+})
+
 
 -- Teleport Tab
 
