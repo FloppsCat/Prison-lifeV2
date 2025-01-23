@@ -548,7 +548,6 @@ local Toggle = PlayerTab:CreateToggle({
 for _, part in pairs(game.Players.LocalPlayer.Character:GetDescendants()) do
                     if part:IsA("BasePart") and part.CanCollide then
                         part.CanCollide = Value
-   
    end,
 })
 
