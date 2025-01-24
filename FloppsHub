@@ -642,7 +642,7 @@ RunService.Heartbeat:Connect(function()
         end
 end
 end)
-   -- The variable (Value) is a boolean on whether the toggle is true or false
+   local Value = false
    end,
 })
 
