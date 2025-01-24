@@ -540,58 +540,13 @@ end)
    end,
 })
 
-local Button = PlayerTab:CreateButton({
-   Name = "Noclip Gui",
-   Callback = function()
-   -- Instances
-local main = Instance.new("ScreenGui")
-local noclipButton = Instance.new("TextButton")
-
--- Properties
-main.Name = "main"
-main.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
-main.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
-
-noclipButton.Name = "noclipButton"
-noclipButton.Parent = main
-noclipButton.BackgroundColor3 = Color3.fromRGB(100, 200, 100)
-noclipButton.Position = UDim2.new(0.1, 0, 0.4, 0)
-noclipButton.Size = UDim2.new(0, 100, 0, 50)
-noclipButton.Font = Enum.Font.SourceSans
-noclipButton.Text = "No-Clip: OFF"
-noclipButton.TextColor3 = Color3.fromRGB(255, 255, 255)
-noclipButton.TextSize = 16
-
-
---Noclip Function
-local noClipEnabled = false
-
-
---Toggle noclipButton
-
-noclipButton.MouseButton1Click:Connect(function()
-    noClipEnabled = not noClipEnabled
-    noclipButton.Text = noClipEnabled and "No-Clip: ON" or "No-Clip: OFF"
-if noClipEnabled then
-        -- Enable Button
-        game:GetService("RunService").Stepped:Connect(function()
-            if noClipEnabled then
-                for _, part in pairs(game.Players.LocalPlayer.Character:GetDescendants()) do
-                    if part:IsA("BasePart") and part.CanCollide then
-                        part.CanCollide = false
-                    end
-                end
-            end
-        end)
-    else
-        --Disable noclipButton
-        for _, part in pairs(game.Players.LocalPlayer.Character:GetDescendants()) do
-            if part:IsA("BasePart") then
-                part.CanCollide = true
-            end
-        end
-    end
-end)
+local Toggle = PlayerTab:CreateToggle({
+   Name = "Toggle Example",
+   CurrentValue = false,
+   Flag = "Toggle1", -- A flag is the identifier for the configuration file, make sure every element has a different flag if you're using configuration saving to ensure no overlaps
+   Callback = function(Value)
+   -- The function that takes place when the toggle is pressed
+   -- The variable (Value) is a boolean on whether the toggle is true or false
    end,
 })
 
@@ -606,58 +561,6 @@ local Button = TeleportTab:CreateButton({
    Name = "Teleport to crims",
    Callback = function()
    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-943.161194, 94.1287766, 2055.63623, 0.967139363, 7.75302809e-08, -0.254246831, -5.05523126e-08, 1, 1.12643093e-07, 0.254246831, -9.60888045e-08, 0.967139363)
-   end,
-})
-
-local Toggle = PlayeTab:CreateToggle({
-   Name = "Esp",
-   CurrentValue = false,
-   Flag = "Toggle1", -- A flag is the identifier for the configuration file, make sure every element has a different flag if you're using configuration saving to ensure no overlaps
-   Callback = function(Value)
-   local Players = game:GetService("Players"):GetChildren()
-local RunService = game:GetService("RunService")
-local highlight = Instance.new("Highlight")
-highlight.Name = "Highlight"
-
-for i, v in pairs(Players) do
-    repeat wait() until v.Character
-    if not v.Character:FindFirstChild("HumanoidRootPart"):FindFirstChild("Highlight") then
-        local highlightClone = highlight:Clone()
-        highlightClone.Adornee = v.Character
-        highlightClone.Parent = v.Character:FindFirstChild("HumanoidRootPart")
-        highlightClone.DepthMode = Enum.HighlightDepthMode.AlwaysOnTop
-        highlightClone.Name = "Highlight"
-    end
-end
-
-game.Players.PlayerAdded:Connect(function(player)
-    repeat wait() until player.Character
-    if not player.Character:FindFirstChild("HumanoidRootPart"):FindFirstChild("Highlight") then
-        local highlightClone = highlight:Clone()
-        highlightClone.Adornee = player.Character
-        highlightClone.Parent = player.Character:FindFirstChild("HumanoidRootPart")
-        highlightClone.Name = "Highlight"
-    end
-end)
-
-game.Players.PlayerRemoving:Connect(function(playerRemoved)
-    playerRemoved.Character:FindFirstChild("HumanoidRootPart").Highlight:Destroy()
-end)
-
-RunService.Heartbeat:Connect(function()
-    for i, v in pairs(Players) do
-        repeat wait() until v.Character
-        if not v.Character:FindFirstChild("HumanoidRootPart"):FindFirstChild("Highlight") then
-            local highlightClone = highlight:Clone()
-            highlightClone.Adornee = v.Character
-            highlightClone.Parent = v.Character:FindFirstChild("HumanoidRootPart")
-            highlightClone.DepthMode = Enum.HighlightDepthMode.AlwaysOnTop
-            highlightClone.Name = "Highlight"
-            task.wait()
-        end
-end
-end)
-   -- The variable (Value) is a boolean on whether the toggle is true or false
    end,
 })
 
